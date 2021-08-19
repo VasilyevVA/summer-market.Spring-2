@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.geekbrains.summer.market.exceptions.ResourceNotFoundException;
-import ru.geekbrains.summer.market.model.Product;
 import ru.geekbrains.summer.market.services.ProductService;
 import ru.geekbrains.summer.market.utils.Cart;
 
