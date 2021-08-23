@@ -1,4 +1,3 @@
-
 angular.module('app').controller('ordersController', function ($scope, $http, $localStorage) {
     const contextPath = 'http://localhost:8189/summer';
 
@@ -8,30 +7,9 @@ angular.module('app').controller('ordersController', function ($scope, $http, $l
             method: 'GET'
         }).then(function (response) {
             $scope.orders = response.data;
+            console.log($scope.orders);
         });
     }
 
-    $scope.showProducts = function (orderId) {
-        $http({
-            url: contextPath + '/api/v1/orders/' + orderId,
-            method: 'GET'
-        }).then(function (response) {
-            console.log(response);
-            $scope.products = response.data;
-        });
-     }
-
-     $scope.createOrder = function(){
-         $http({
-             url: basePath + '/api/v1/orders',
-             method: 'POST'
-         }).then(function(response){
-             alert('Заказ создан');
-             $scope.loadCart();
-             //$scope.loadOrders();
-         });
-     };
-
     $scope.loadOrders();
-
 });

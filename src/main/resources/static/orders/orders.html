@@ -1,51 +1,31 @@
+
 <div>
-    <div>
-        <p></p>
-        <h3>Ваши заказы</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <td>ID</td>
-                <td>Цена</td>
-                <td>Адрес доставки</td>
-                <td>Телефон</td>
-                <td></td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="o in orders">
-                <td>{{o.id}}</td>
-                <td>{{o.price}}</td>
-                <td>{{o.address}}</td>
-                <td>{{o.phone}}</td>
-                <td>
-                    <button class="btn btn-primary" ng-click="showProducts(o.id)">Показать товары</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
     <p></p>
-    <p></p>
+    <h3>Ваши заказы</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Детали</td>
+            <td>Адрес доставки</td>
+            <td>Телефон</td>
+            <td>Цена</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="o in orders">
+            <td>{{o.id}}</td>
+            <td>
+                <div ng-repeat="oi in o.items">
+                    <span>{{oi.productTitle + ' x' + oi.quantity}}</span>
+                    <p></p>
+                </div>
 
-
-    <div>
-        <table class="table">
-            <thead>
-            <tr>
-                <td>ID</td>
-                <td>Название</td>
-                <td>Цена</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="p in products">
-                <td>{{p.id}}</td>
-                <td>{{p.title}}</td>
-                <td>{{p.price}}</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+            </td>
+            <td>{{o.address}}</td>
+            <td>{{o.phone}}</td>
+            <td>{{o.price}}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>

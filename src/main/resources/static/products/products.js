@@ -1,3 +1,4 @@
+
 angular.module('app').controller('productsController', function ($scope, $http, $localStorage) {
     const contextPath = 'http://localhost:8189/summer';
 
@@ -6,7 +7,7 @@ angular.module('app').controller('productsController', function ($scope, $http, 
             url: contextPath + '/api/v1/cart/add/' + productId,
             method: 'GET'
         }).then(function (response) {
-            //$scope.loadCart();
+            $scope.loadCart();
         });
     }
 
@@ -16,6 +17,9 @@ angular.module('app').controller('productsController', function ($scope, $http, 
             method: 'GET',
             params: {
                 'p': pageIndex
+//                min_price: $scope.filter.min_price
+//                max_price: $scope.filter.max_price,
+//                title: $scope.filter.titleLike
             }
         }).then(function (response) {
             $scope.productsPage = response.data;
