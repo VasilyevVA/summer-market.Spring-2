@@ -1,40 +1,34 @@
-package ru.geekbrains.summer.market.model;
+package ru.geekbrains.summer.market.ws;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import ru.geekbrains.summer.market.model.Category;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
-@Data
 @Entity
-@Table(name = "order_items")
-public class OrderItem {
+@Data
+@Table(name = "products")
+@NoArgsConstructor
+public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
-
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-    @Column(name = "price_per_product")
-    private BigDecimal pricePerProduct;
+    @Column(name = "title")
+    private String title;
 
     @Column(name = "price")
     private BigDecimal price;
 
-    @Column(name = "quantity")
-    private int quantity;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @CreationTimestamp
     @Column(name = "created_at")
